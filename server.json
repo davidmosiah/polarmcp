@@ -1,0 +1,71 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.davidmosiah/polarmcp",
+  "description": "Privacy-first, unofficial Polar AccessLink Dynamic API v4 MCP server for AI health, sleep and training agents.",
+  "repository": {
+    "url": "https://github.com/davidmosiah/polarmcp",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "polar-mcp-unofficial",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "POLAR_CLIENT_ID",
+          "description": "Polar OAuth client ID. Optional when configured with polar-mcp-server setup.",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": false
+        },
+        {
+          "name": "POLAR_CLIENT_SECRET",
+          "description": "Polar OAuth client secret. Prefer polar-mcp-server setup so this secret is stored in ~/.polar-mcp/config.json instead of MCP client config.",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": true
+        },
+        {
+          "name": "POLAR_REDIRECT_URI",
+          "description": "Redirect URI configured in the Polar AccessLink admin. Optional when configured with polar-mcp-server setup.",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": false
+        },
+        {
+          "name": "POLAR_TOKEN_PATH",
+          "description": "Optional local path for OAuth tokens. Defaults to ~/.polar-mcp/tokens.json.",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": false
+        },
+        {
+          "name": "POLAR_PRIVACY_MODE",
+          "description": "Optional payload mode: summary, structured, or raw. Defaults to structured. raw means full Polar AccessLink payloads for supported endpoints.",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": false
+        },
+        {
+          "name": "POLAR_CACHE",
+          "description": "Optional SQLite cache toggle. Set to true or sqlite to enable.",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": false
+        },
+        {
+          "name": "POLAR_CACHE_PATH",
+          "description": "Optional local SQLite cache path. Defaults to ~/.polar-mcp/cache.sqlite.",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": false
+        }
+      ]
+    }
+  ]
+}

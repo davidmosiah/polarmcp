@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.env
+.env.*
+*.log
+.DS_Store
+coverage/
+.polar-mcp/
+
+# MCP Registry local auth tokens
+.mcpregistry_*_token
+docs/.vercel/
+.vercel

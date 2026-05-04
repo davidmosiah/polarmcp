@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Polar MCP Unofficial - AccessLink v4 for AI Agents</title>
+  <meta name="description" content="Unofficial local-first Polar MCP server for AI agents. Connect Polar AccessLink Dynamic API v4 activity, sleep, Nightly Recharge, training, route and sample data.">
+  <meta name="keywords" content="Polar MCP, Polar AccessLink, Polar API, Model Context Protocol, AI agents, Claude, Cursor, Hermes, OpenClaw, sleep, training, activity">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://polarmcp.vercel.app/">
+  <meta property="og:title" content="Polar MCP Unofficial">
+  <meta property="og:description" content="Your Polar AccessLink data, safely available to your AI agent. Local-first OAuth, 30 tools, daily and weekly summaries.">
+  <meta property="og:image" content="https://polarmcp.vercel.app/assets/og-card.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/favicon.svg">
+  <link rel="stylesheet" href="assets/site.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"Polar MCP Unofficial","codeRepository":"https://github.com/davidmosiah/polarmcp","url":"https://polarmcp.vercel.app/","programmingLanguage":"TypeScript","runtimePlatform":"Node.js","license":"https://github.com/davidmosiah/polarmcp/blob/main/LICENSE","applicationCategory":"DeveloperApplication","description":"Unofficial local-first MCP server that connects AI agents to user-authorized Polar AccessLink Dynamic API v4 data."}
+  </script>
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="grid-noise"></div>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Polar MCP home"><span class="brand-glyph"><i></i><i></i><i></i><i></i><i></i></span><span><strong>Polar MCP</strong><small>unofficial local bridge</small></span></a>
+    <nav class="nav" aria-label="Primary navigation"><a href="#install">Install</a><a href="#signals">Signals</a><a href="#agents">Agents</a><a href="#privacy">Privacy</a><a class="nav-cta" href="https://github.com/davidmosiah/polarmcp">GitHub</a></nav>
+  </header>
+  <main id="top">
+    <section class="hero section-shell">
+      <div class="hero-copy">
+        <p class="eyebrow">Read-only OAuth · local tokens · AccessLink v4</p>
+        <h1>Polar AccessLink, packaged for agent workflows.</h1>
+        <p class="hero-text">Polar MCP is an unofficial, open-source bridge that gives AI agents safe access to user-authorized Polar activity, sleep, Nightly Recharge, training, routes, samples, devices and tests through the official AccessLink Dynamic API v4.</p>
+        <div class="hero-actions"><a class="button primary" href="#install">Install in 3 minutes</a><a class="button ghost" href="https://github.com/davidmosiah/polarmcp">View source</a><a class="button ghost" href="https://www.npmjs.com/package/polar-mcp-unofficial">npm</a></div>
+        <div class="command-pill"><code>npx -y polar-mcp-unofficial setup</code><button type="button" data-copy="npx -y polar-mcp-unofficial setup&#10;npx -y polar-mcp-unofficial auth&#10;npx -y polar-mcp-unofficial doctor">Copy</button></div>
+      </div>
+      <div class="signal-stage" aria-label="Polar signal dashboard preview">
+        <div class="stage-ring ring-one"></div><div class="stage-ring ring-two"></div><div class="core-orb"><span>30</span><small>tools</small></div>
+        <svg class="ecg" viewBox="0 0 560 150" role="img" aria-label="Animated training signal line"><path d="M8 84 H72 L91 84 L110 36 L136 118 L162 84 H238 L266 84 L286 58 L306 102 L328 84 H410 L432 84 L452 24 L484 126 L506 84 H552"/></svg>
+        <article class="metric-card card-sleep"><small>Sleep</small><strong>7h 10m</strong><span>summary context</span></article>
+        <article class="metric-card card-hrv"><small>Recharge</small><strong>good</strong><span>trend, not diagnosis</span></article>
+        <article class="metric-card card-load"><small>Training</small><strong>1 session</strong><span>load + recovery</span></article>
+      </div>
+    </section>
+    <section class="proof-strip" aria-label="Project facts"><article><strong>Official API</strong><span>Polar AccessLink v4 OAuth2</span></article><article><strong>Local-first</strong><span>tokens under ~/.polar-mcp</span></article><article><strong>30 tools</strong><span>activity, sleep, training, routes</span></article><article><strong>Agent-ready</strong><span>Claude, Cursor, Hermes, OpenClaw</span></article></section>
+    <section id="install" class="section-shell install-section"><div class="section-head"><p class="eyebrow">For humans</p><h2>No API archaeology. No token pasted into agent configs.</h2><p>Polar developer setup is the hard part. This page gives the exact callback, scopes and commands so a non-technical user can delegate the install safely.</p></div><div class="install-grid"><article class="install-card"><span>01</span><h3>Create your Polar client</h3><p>Open the Polar AccessLink admin and add this callback URL.</p><div class="copy-row"><code>http://127.0.0.1:3000/callback</code><button data-copy="http://127.0.0.1:3000/callback">Copy</button></div><a href="https://admin.polaraccesslink.com">Open Polar AccessLink</a></article><article class="install-card featured"><span>02</span><h3>Grant read scopes</h3><p>The MCP is read-only by default. It needs the scopes below for broad agent summaries.</p><div class="copy-row"><code>activity:read calendar:read continuous_samples:read devices:read nightly_recharge:read ppi_data:read profile:read routes:read skin_contact:read sleep:read sports:read temperature_measurement:read tests:read training_sessions:read training_targets:read user_subscription:read</code><button data-copy="activity:read calendar:read continuous_samples:read devices:read nightly_recharge:read ppi_data:read profile:read routes:read skin_contact:read sleep:read sports:read temperature_measurement:read tests:read training_sessions:read training_targets:read user_subscription:read">Copy</button></div></article><article class="install-card terminal-card"><span>03</span><h3>Run setup</h3><pre><code>npx -y polar-mcp-unofficial setup
+npx -y polar-mcp-unofficial auth
+npx -y polar-mcp-unofficial doctor</code></pre><button data-copy="npx -y polar-mcp-unofficial setup&#10;npx -y polar-mcp-unofficial auth&#10;npx -y polar-mcp-unofficial doctor">Copy commands</button></article></div></section>
+    <section id="signals" class="section-shell signals-section"><div class="section-head narrow"><p class="eyebrow">The toolbelt</p><h2>Polar signals, shaped for agents.</h2></div><div class="tool-grid"><article><b>Activity</b><span>daily activity, steps, calories and calendar context</span></article><article><b>Sleep</b><span>sleeps, sleep/wake vectors and Nightly Recharge</span></article><article><b>Training</b><span>sessions, targets, sports and sport profiles</span></article><article><b>Samples</b><span>continuous samples, PPI, temperature and skin contact</span></article><article><b>Routes</b><span>route data is GPS-sensitive and redacted by default</span></article></div></section>
+    <section id="agents" class="section-shell agent-section"><div class="agent-panel"><div><p class="eyebrow">For agents</p><h2>A manifest that tells agents how not to break things.</h2><p>Agents should call <code>polar_agent_manifest</code> and <code>polar_connection_status</code> first. Hermes gets direct tool names and explicit reload guidance so it does not restart the gateway for normal Polar access.</p></div><div class="agent-prompt"><button data-copy="Install the unofficial Polar MCP server for me. Repository: https://github.com/davidmosiah/polarmcp. Create a Polar AccessLink client with callback http://127.0.0.1:3000/callback and read scopes activity:read calendar:read continuous_samples:read devices:read nightly_recharge:read ppi_data:read profile:read routes:read skin_contact:read sleep:read sports:read temperature_measurement:read tests:read training_sessions:read training_targets:read user_subscription:read. Run npx -y polar-mcp-unofficial setup, auth and doctor. If this is Hermes, use setup --client hermes and reload MCP with /reload-mcp or hermes mcp test polar. Do not print tokens or secrets. Do not provide medical diagnosis.">Copy delegation prompt</button><pre><code>Install the unofficial Polar MCP server for me.
+Repo: github.com/davidmosiah/polarmcp
+Callback: http://127.0.0.1:3000/callback
+Then run setup, auth and doctor.
+Keep tokens local. No medical diagnosis.</code></pre></div></div></section>
+    <section id="privacy" class="section-shell privacy-section"><div class="section-head narrow"><p class="eyebrow">Trust boundary</p><h2>Health and route data are not toy payloads.</h2><p>This MCP exposes Polar AccessLink Dynamic API v4 data. It does not call private Polar Flow mobile endpoints, write data, or provide clinical diagnosis. Raw JSON is explicit; summary and structured modes are safer defaults.</p></div><div class="privacy-grid"><article><strong>summary</strong><span>minimal safe fields</span></article><article><strong>structured</strong><span>normalized agent data</span></article><article><strong>raw</strong><span>explicit upstream JSON</span></article><article><strong>0600</strong><span>local token permissions</span></article></div></section>
+    <section class="closing section-shell"><div><p class="eyebrow">Open source quantified-self infrastructure</p><h2>Make personal health agents safer, clearer and more useful.</h2></div><div class="hero-actions"><a class="button primary" href="https://github.com/davidmosiah/polarmcp">Star on GitHub</a><a class="button ghost" href="quickstart.md">Read quickstart</a></div></section>
+  </main>
+  <footer class="footer">Unofficial project. Not affiliated with Polar. Not medical advice.</footer>
+  <script src="assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+Polar MCP Unofficial
+
+Unofficial local-first MCP server for connecting AI agents to user-authorized Polar AccessLink Dynamic API v4 data.
+
+Default scopes: activity:read calendar:read continuous_samples:read devices:read nightly_recharge:read ppi_data:read profile:read routes:read skin_contact:read sleep:read sports:read temperature_measurement:read tests:read training_sessions:read training_targets:read user_subscription:read.
+Important tools: polar_connection_status, polar_daily_summary, polar_weekly_summary, polar_list_sleeps, polar_list_nightly_recharge, polar_list_training_sessions, polar_list_activity.
+Privacy: tokens stay local under ~/.polar-mcp. summary and structured modes minimize sensitive output and redact GPS. raw mode is explicit.
+Boundary: not affiliated with Polar. Not medical advice. Uses official Polar AccessLink Dynamic API v4 read endpoints.
