@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1
+
+- Improved README and local OAuth success/terminal UX.
+- Kept Polar AccessLink v4 tool surface and package metadata aligned after the first public npm release.
+
 ## 0.1.0
 
 - Initial Polar MCP implementation.
