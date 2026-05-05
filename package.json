@@ -75,7 +75,7 @@
   "bugs": {
     "url": "https://github.com/davidmosiah/polarmcp/issues"
   },
-  "homepage": "https://polarmcp.vercel.app/",
+  "homepage": "https://wellness.delx.ai/connectors/polar",
   "mcpName": "io.github.davidmosiah/polarmcp",
   "publishConfig": {
     "access": "public",

@@ -205,7 +205,8 @@ npx @modelcontextprotocol/inspector node dist/index.js
 ## Links
 
 - npm: <https://www.npmjs.com/package/polar-mcp-unofficial>
-- Docs site: <https://polarmcp.vercel.app/>
+- Docs site: <https://wellness.delx.ai/connectors/polar>
+- Legacy docs: <https://polarmcp.vercel.app/>
 - GitHub: <https://github.com/davidmosiah/polarmcp>
 - Delx Wellness registry: <https://github.com/davidmosiah/delx-wellness>
 - Connector quality standard: <https://github.com/davidmosiah/delx-wellness/blob/main/docs/connector-quality-standard.md>
