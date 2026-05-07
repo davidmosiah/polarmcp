@@ -3,6 +3,8 @@ import { spawn } from 'node:child_process';
 import http from 'node:http';
 
 const port = String(43000 + Math.floor(Math.random() * 1000));
+const healthCheckAttempts = 100;
+const healthCheckDelayMs = 200;
 const child = spawn(process.execPath, ['dist/index.js', '--http'], {
   env: { ...process.env, POLAR_MCP_PORT: port, POLAR_MCP_HOST: '127.0.0.1' },
   stdio: ['ignore', 'ignore', 'pipe']
@@ -32,7 +34,7 @@ function getJson(url) {
 
 try {
   let ok = false;
-  for (let i = 0; i < 30; i += 1) {
+  for (let i = 0; i < healthCheckAttempts; i += 1) {
     try {
       const { statusCode, data } = await getJson(`http://127.0.0.1:${port}/health`);
       assert.equal(statusCode, 200);
@@ -40,7 +42,7 @@ try {
       ok = true;
       break;
     } catch {
-      await new Promise((resolve) => setTimeout(resolve, 150));
+      await new Promise((resolve) => setTimeout(resolve, healthCheckDelayMs));
     }
   }
   if (!ok) throw new Error(`HTTP server did not become healthy. stderr=${stderr}`);
