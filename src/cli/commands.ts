@@ -1,6 +1,14 @@
 import { buildConnectionStatus } from "../services/connection-status.js";
 import { SERVER_VERSION } from "../constants.js";
 import { parseAgentClientName } from "../services/agent-manifest.js";
+import {
+  buildProfileSummary,
+  getOnboardingFlow,
+  getProfile,
+  getProfilePath,
+  missingCriticalFields,
+  type WellnessLanguage
+} from "../services/profile-store.js";
 import { runAuthCommand } from "./auth.js";
 import { runSetupCommand } from "./setup.js";
 
@@ -10,6 +18,7 @@ export async function runCliCommand(args: string[]): Promise<number | undefined>
   if (command === "setup") return runSetupCommand(rest);
   if (command === "doctor" || command === "status") return runDoctor(rest);
   if (command === "auth") return runAuthCommand(rest);
+  if (command === "onboarding") return runOnboarding(rest);
   if (command === "version" || command === "--version" || command === "-v") {
     console.log(SERVER_VERSION);
     return 0;
@@ -24,6 +33,52 @@ export async function runCliCommand(args: string[]): Promise<number | undefined>
     return 1;
   }
   return undefined;
+}
+
+async function runOnboarding(args: string[]): Promise<number> {
+  let locale: WellnessLanguage = "en";
+  for (let index = 0; index < args.length; index += 1) {
+    if (args[index] === "--locale") {
+      const value = args[index + 1];
+      if (value === "pt-BR" || value === "en") locale = value;
+      index += 1;
+    }
+  }
+  const flow = getOnboardingFlow(locale);
+  const profile = await getProfile();
+  const payload = {
+    ok: true,
+    flow,
+    profile,
+    summary: buildProfileSummary(profile),
+    missing_critical: missingCriticalFields(profile),
+    storage_path: getProfilePath(),
+    cross_connector_hint:
+      "This profile is shared across the Delx Wellness MCPs (e.g. wellness-nourish, wellness-cycle-coach, wellness-cgm-mcp). One onboarding pass populates context for all of them."
+  };
+  console.log(JSON.stringify(payload, null, 2));
+  if (process.stderr.isTTY) {
+    const lines = [
+      "",
+      `# Polar MCP — Wellness Onboarding (${flow.locale})`,
+      "",
+      `Storage: ${payload.storage_path}`,
+      `Summary: ${payload.summary}`,
+      `Missing critical fields: ${payload.missing_critical.length ? payload.missing_critical.join(", ") : "none"}`,
+      "",
+      `Cross-connector: ${payload.cross_connector_hint}`,
+      "",
+      "Privacy:",
+      `- ${flow.privacy_note}`,
+      "",
+      "Questions:",
+      ...flow.questions.map((q, index) => `  ${index + 1}. [${q.category}${q.required ? "*" : ""}] ${q.prompt}`),
+      "",
+      "* = required for downstream coaching tools."
+    ];
+    process.stderr.write(lines.join("\n") + "\n");
+  }
+  return 0;
 }
 
 async function runDoctor(args: string[]): Promise<number> {
@@ -120,6 +175,8 @@ Usage:
   polar-mcp-server doctor --client hermes
   polar-mcp-server auth            Authorize Polar with local browser callback
   polar-mcp-server auth --no-open  Print auth URL without opening browser
+  polar-mcp-server onboarding      Print the shared wellness onboarding flow (JSON to stdout)
+  polar-mcp-server onboarding --locale pt-BR
 
 Required env:
   POLAR_CLIENT_ID

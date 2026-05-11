@@ -19,7 +19,8 @@ const STANDARD_TOOLS = [
   "polar_list_sport_profile_catalog", "polar_list_sport_profiles", "polar_list_sports",
   "polar_list_subscriptions", "polar_list_temperature_measurements", "polar_list_tests",
   "polar_list_training_sessions", "polar_list_training_target_favorites", "polar_list_training_targets",
-  "polar_list_user_devices", "polar_privacy_audit", "polar_quickstart",
+  "polar_list_user_devices", "polar_onboarding", "polar_privacy_audit",
+  "polar_profile_get", "polar_profile_update", "polar_quickstart",
   "polar_revoke_access", "polar_weekly_summary", "polar_wellness_context"
 ];
 
@@ -53,7 +54,7 @@ export function buildAgentManifest(client: AgentClientName = "generic") {
       token_storage: "~/.polar-mcp/tokens.json with 0600 permissions",
       secret_storage: "~/.polar-mcp/config.json or POLAR_* environment variables; never print secrets"
     },
-    recommended_first_calls: ["polar_quickstart", "polar_demo", "polar_connection_status", "polar_wellness_context", "polar_daily_summary"],
+    recommended_first_calls: ["polar_profile_get", "polar_quickstart", "polar_demo", "polar_connection_status", "polar_wellness_context", "polar_daily_summary"],
     standard_tools: STANDARD_TOOLS,
     resources: RESOURCES,
     hermes: {

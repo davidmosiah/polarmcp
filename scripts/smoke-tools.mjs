@@ -10,8 +10,9 @@ const expectedTools = [
   'polar_list_skin_contacts', 'polar_list_sleep_wake_vectors', 'polar_list_sleeps', 'polar_list_sport_profile_catalog',
   'polar_list_sport_profiles', 'polar_list_sports', 'polar_list_subscriptions', 'polar_list_temperature_measurements',
   'polar_list_tests', 'polar_list_training_sessions', 'polar_list_training_target_favorites', 'polar_list_training_targets',
-  'polar_list_user_devices', 'polar_privacy_audit', 'polar_quickstart', 'polar_revoke_access',
-  'polar_weekly_summary', 'polar_wellness_context'
+  'polar_list_user_devices', 'polar_onboarding', 'polar_privacy_audit', 'polar_profile_get',
+  'polar_profile_update', 'polar_quickstart', 'polar_revoke_access', 'polar_weekly_summary',
+  'polar_wellness_context'
 ];
 
 const expectedResources = [
