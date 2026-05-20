@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.3 - 2026-05-20
+
+### Added
+
+- **HTTP response cache middleware** (`src/services/http-cache.ts`). In-memory cache for GET responses wraps the existing `fetchWithRetry` layer, so cache hits skip both the network and the retry middleware. Default TTL `60s`; cache key normalizes query-param order so permutations of `?after=...&before=...&per_page=30` share one entry. Bypass conditions: `POLAR_NO_CACHE=true` env var, per-call `cache_ttl: 0`, non-GET methods, and any response with status >= 400. Per-connector singleton — each MCP package gets its own module instance and therefore its own cache map. `polar_cache_status` now also reports `http_cache` stats (`size`, `hit_count`, `miss_count`, `hit_rate`, `default_ttl_seconds`, `bypass_env_var`). No new dependencies.
+
 ## 0.3.2 - 2026-05-19
 
 ### Added

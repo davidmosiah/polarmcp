@@ -2,7 +2,8 @@ import { URL, URLSearchParams } from "node:url";
 import { DEFAULT_LIMIT, POLAR_API_BASE_URL, POLAR_AUTH_URL, POLAR_TOKEN_URL, MAX_POLAR_LIMIT, SERVER_VERSION } from "../constants.js";
 import type { PolarConfig, PolarTokenSet } from "../types.js";
 import { disabledCacheStatus, PolarCache, type CacheStatus } from "./cache.js";
-import { fetchWithRetry } from "./http-retry.js";
+import { fetchWithCache, getCacheStats } from "./http-cache.js";
+import { fetchWithRetry as fetchWithRetryMiddleware } from "./http-retry.js";
 import { redactErrorMessage } from "./redaction.js";
 import { TokenStore } from "./token-store.js";
 
@@ -63,8 +64,17 @@ export class PolarClient {
   }
 
   cacheStatus(): CacheStatus {
-    if (!this.config.cacheEnabled) return disabledCacheStatus(this.config.cachePath);
-    return this.getCache().status();
+    const httpStats = getCacheStats();
+    const http_cache = {
+      size: httpStats.size,
+      hit_count: httpStats.hit_count,
+      miss_count: httpStats.miss_count,
+      hit_rate: httpStats.hit_rate,
+      default_ttl_seconds: 60,
+      bypass_env_var: "POLAR_NO_CACHE"
+    };
+    if (!this.config.cacheEnabled) return { ...disabledCacheStatus(this.config.cachePath), http_cache };
+    return { ...this.getCache().status(), http_cache };
   }
 
   async list(path: string, params: ListParams = {}): Promise<{ records: unknown[]; next_page?: number; pages_fetched: number }> {
@@ -240,7 +250,12 @@ export class PolarClient {
   }
 
   private async fetchWithRetry(url: string, init: RequestInit): Promise<Response> {
-    return fetchWithRetry(url, init);
+    const retryWrappedFetch = (u: string, i?: RequestInit) => fetchWithRetryMiddleware(u, i ?? {});
+    return fetchWithCache(url, init, {
+      defaultTtlSeconds: 60,
+      envVarBypass: "POLAR_NO_CACHE",
+      innerFetch: retryWrappedFetch
+    });
   }
 }
 
