@@ -136,9 +136,6 @@ function safeDoctorStatus(status: Awaited<ReturnType<typeof buildConnectionStatu
       has_refresh_token: raw.token.has_refresh_token,
       has_di_token: raw.token.has_di_token
     } : undefined,
-    oauth: raw.oauth ? {
-      scope_status: raw.oauth.scope_status
-    } : undefined,
     cache: raw.cache ? {
       enabled: Boolean(raw.cache.enabled)
     } : undefined,
@@ -152,9 +149,9 @@ function printDoctor(status: Awaited<ReturnType<typeof buildConnectionStatus>>):
   const fail = "fail";
   const info = "-";
   const check = (passed: boolean) => (passed ? ok : fail);
-  const line = (mark: string, label: string, detail?: string) => {
+  const line = (mark: string, label: string, _detail?: string) => {
     const labelCol = label.padEnd(28);
-    console.log(`  ${mark}  ${labelCol}${detail ? `  ${detail}` : ""}`);
+    console.log(`  ${mark}  ${labelCol}`);
   };
 
   console.log("Polar MCP - Doctor");
@@ -172,7 +169,7 @@ function printDoctor(status: Awaited<ReturnType<typeof buildConnectionStatus>>):
     line(check(Boolean(status.token.has_refresh_token)), "Refresh token", status.token.has_refresh_token ? undefined : "missing");
   }
   const scopesOk = status.oauth.scope_status === "ok" || status.oauth.missing_recommended_scopes.length === 0;
-  line(scopesOk ? ok : fail, "OAuth scopes", status.oauth.scope_status);
+  line(scopesOk ? ok : fail, "OAuth scopes");
   line(info, "Privacy mode", status.privacy_mode);
   line(status.cache.enabled ? ok : info, "Cache", status.cache.enabled ? "enabled" : "disabled");
   if (status.client_checks?.hermes) {
