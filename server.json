@@ -6,12 +6,12 @@
     "url": "https://github.com/davidmosiah/polarmcp",
     "source": "github"
   },
-  "version": "0.3.4",
+  "version": "0.3.5",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "polar-mcp-unofficial",
-      "version": "0.3.4",
+      "version": "0.3.5",
       "transport": {
         "type": "stdio"
       },
