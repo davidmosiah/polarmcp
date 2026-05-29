@@ -18,7 +18,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/davidmosiah/polarmcp/stargazers"><img src="https://img.shields.io/github/stars/davidmosiah/polarmcp?style=for-the-badge&labelColor=0F172A&color=FBBF24&logo=github" alt="GitHub stars" /></a>
+  <a href="https://github.com/davidmosiah/polar-mcp/stargazers"><img src="https://img.shields.io/github/stars/davidmosiah/polar-mcp?style=for-the-badge&labelColor=0F172A&color=FBBF24&logo=github" alt="GitHub stars" /></a>
   <a href="https://modelcontextprotocol.io"><img src="https://img.shields.io/badge/BUILT_FOR-MCP-7C3AED?style=for-the-badge&labelColor=0F172A" alt="Built for MCP" /></a>
   <a href="https://github.com/davidmosiah/delx-wellness-hermes"><img src="https://img.shields.io/badge/HERMES-one--command_setup-10B981?style=for-the-badge&labelColor=0F172A" alt="Hermes one-command setup" /></a>
   <a href="https://github.com/davidmosiah/delx-wellness"><img src="https://img.shields.io/badge/Polar-D7263D?style=for-the-badge&labelColor=0F172A&logoColor=white" alt="Polar" /></a>
@@ -218,8 +218,8 @@ If browser OAuth has to happen on a different machine than Hermes, run `auth` lo
 ## Development
 
 ```bash
-git clone https://github.com/davidmosiah/polarmcp.git
-cd polarmcp
+git clone https://github.com/davidmosiah/polar-mcp.git
+cd polar-mcp
 npm install
 npm test
 npm run build
@@ -236,7 +236,7 @@ npx @modelcontextprotocol/inspector node dist/index.js
 - npm: <https://www.npmjs.com/package/polar-mcp-unofficial>
 - Docs site: <https://wellness.delx.ai/connectors/polar>
 - Legacy docs: <https://polarmcp.vercel.app/>
-- GitHub: <https://github.com/davidmosiah/polarmcp>
+- GitHub: <https://github.com/davidmosiah/polar-mcp>
 - Delx Wellness registry: <https://github.com/davidmosiah/delx-wellness>
 - Connector quality standard: <https://github.com/davidmosiah/delx-wellness/blob/main/docs/connector-quality-standard.md>
 - Polar AccessLink Dynamic API v4 docs: <https://www.polar.com/polar-api-v4/>
@@ -256,7 +256,7 @@ The full [Delx Wellness](https://wellness.delx.ai) connector library:
 | Fitbit | [`fitbit-mcp-unofficial`](https://www.npmjs.com/package/fitbit-mcp-unofficial) | [fitbitmcp](https://github.com/davidmosiah/fitbitmcp) |
 | Withings | [`withings-mcp-unofficial`](https://www.npmjs.com/package/withings-mcp-unofficial) | [withingsmcp](https://github.com/davidmosiah/withingsmcp) |
 | Apple Health | [`apple-health-mcp-unofficial`](https://www.npmjs.com/package/apple-health-mcp-unofficial) | [apple-health-mcp](https://github.com/davidmosiah/apple-health-mcp) |
-| Polar | [`polar-mcp-unofficial`](https://www.npmjs.com/package/polar-mcp-unofficial) | [polarmcp](https://github.com/davidmosiah/polarmcp) |
+| Polar | [`polar-mcp-unofficial`](https://www.npmjs.com/package/polar-mcp-unofficial) | [polar-mcp](https://github.com/davidmosiah/polar-mcp) |
 | Nourish (nutrition) | [`wellness-nourish`](https://www.npmjs.com/package/wellness-nourish) | [wellness-nourish](https://github.com/davidmosiah/wellness-nourish) |
 
 **One-command setup for Hermes** — preconfigures every connector above plus wellness skills + onboarding: [`delx-wellness-hermes`](https://github.com/davidmosiah/delx-wellness-hermes).
@@ -266,7 +266,7 @@ The full [Delx Wellness](https://wellness.delx.ai) connector library:
 ## 📧 Contact & Support
 
 - 📨 **support@delx.ai** — general questions, integration help, partnerships
-- 🐛 **Bug reports / feature requests** — [GitHub Issues](https://github.com/davidmosiah/polarmcp/issues)
+- 🐛 **Bug reports / feature requests** — [GitHub Issues](https://github.com/davidmosiah/polar-mcp/issues)
 - 🐦 **Updates** — [@delx369](https://x.com/delx369) on X
 - 🌐 **Site** — [wellness.delx.ai](https://wellness.delx.ai)
 
